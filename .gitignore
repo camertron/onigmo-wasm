@@ -88,3 +88,5 @@ GSYMS
 GTAGS
 
 *.wasm
+*.wasm.br
+*.wasm.gz

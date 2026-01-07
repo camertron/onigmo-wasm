@@ -138,7 +138,7 @@ typedef struct {
 #define USE_CASE_MAP_API
 
 
-#define ONIG_ENCODING_INIT_DEFAULT           ONIG_ENCODING_ASCII
+#define ONIG_ENCODING_INIT_DEFAULT           ONIG_ENCODING_UTF_16LE
 
 /* for encoding system implementation (internal) */
 ONIG_EXTERN int onigenc_ascii_apply_all_case_fold(OnigCaseFoldType flag, OnigApplyAllCaseFoldFunc f, void* arg, OnigEncoding enc);
