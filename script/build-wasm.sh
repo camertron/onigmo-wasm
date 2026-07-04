@@ -30,7 +30,7 @@ wasm-ld \
 	-l c \
 	*.o
 
-wasm-opt -Oz -o onigmo.wasm onigmo.wasm
+wasm-opt -Oz --strip-debug --strip-producers -o onigmo.wasm onigmo.wasm
 wasm-strip onigmo.wasm
 
 brotli -f -q 11 -o onigmo.wasm.br onigmo.wasm
