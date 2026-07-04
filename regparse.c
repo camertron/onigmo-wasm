@@ -466,7 +466,7 @@ typedef st_data_t HashDataType;   /* 1.6 st.h doesn't define st_data_t type */
 
 #  ifdef ONIG_DEBUG
 static int
-i_print_name_entry(UChar* key, NameEntry* e, void* arg)
+i_print_name_entry(UChar* key, NameEntry* e, void* arg, int error ARG_UNUSED)
 {
   int i;
   FILE* fp = (FILE* )arg;
@@ -501,7 +501,8 @@ onig_print_names(FILE* fp, regex_t* reg)
 #  endif /* ONIG_DEBUG */
 
 static int
-i_free_name_entry(UChar* key, NameEntry* e, void* arg ARG_UNUSED)
+i_free_name_entry(UChar* key, NameEntry* e, void* arg ARG_UNUSED,
+                  int error ARG_UNUSED)
 {
   xfree(e->name);
   if (IS_NOT_NULL(e->back_refs)) xfree(e->back_refs);
@@ -558,7 +559,8 @@ typedef struct {
 } INamesArg;
 
 static int
-i_names(UChar* key ARG_UNUSED, NameEntry* e, INamesArg* arg)
+i_names(UChar* key ARG_UNUSED, NameEntry* e, INamesArg* arg,
+        int error ARG_UNUSED)
 {
   int r = (*(arg->func))(e->name,
 			 e->name + e->name_len,
@@ -591,7 +593,8 @@ onig_foreach_name(regex_t* reg,
 }
 
 static int
-i_renumber_name(UChar* key ARG_UNUSED, NameEntry* e, GroupNumRemap* map)
+i_renumber_name(UChar* key ARG_UNUSED, NameEntry* e, GroupNumRemap* map,
+                int error ARG_UNUSED)
 {
   int i;
 
